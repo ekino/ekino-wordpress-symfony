@@ -16,6 +16,16 @@ define('WP_SYMFONY_DEBUG', true);
 
 ## Usage
 
+### Retrieve a Symfony service
+
+You can retrieve all Symfony services registered in the dependency injection container with the following method:
+
+```php
+$service = \symfony_service('my.symfony.service.identifier');
+```
+
+### Dispatch Wordpress hooks in Symfony using EventDispatcher
+
 This plugin allows Wordpress to dispatch some hooks on the Symfony EventDispatcher component.
 
 An example with the two following hooks has been added:
