@@ -4,7 +4,7 @@ This is the Ekino Wordpress plugin to interact with Symfony.
 
 ## Installation
 
-1) Enabled the "Ekino Wordpress Symfony" plugin.
+1) Enable the "Ekino Wordpress Symfony" plugin.
 
 2) Put the following lines in your `wp-config.php` file, according to your project configuration:
 
