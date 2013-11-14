@@ -11,14 +11,14 @@ Version: 0.1
 require_once 'core.php';
 require_once 'hook.php';
 
-\symfony_boot();
+symfony_boot();
 
 /**
  * User login hook
  */
-\add_action('wp_login', 'ekino_wordpress_symfony_hook_wp_login', 10, 2);
+add_action('wp_login', 'ekino_wordpress_symfony_hook_wp_login', 10, 2);
 
 /**
  * User logout hook
  */
-\add_action('wp_logout', 'ekino_wordpress_symfony_hook_wp_logout');
+add_action('wp_logout', 'ekino_wordpress_symfony_hook_wp_logout');

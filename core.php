@@ -19,7 +19,7 @@ function symfony_boot()
         require_once sprintf('%s/app/bootstrap.php.cache', WP_SYMFONY_PATH);
         require_once sprintf('%s/app/AppKernel.php', WP_SYMFONY_PATH);
 
-        $kernel = new \AppKernel(WP_SYMFONY_ENVIRONMENT, WP_SYMFONY_DEBUG);
+        $kernel = new AppKernel(WP_SYMFONY_ENVIRONMENT, WP_SYMFONY_DEBUG);
         $kernel->loadClassCache();
         $kernel->boot();
 
@@ -56,7 +56,7 @@ function symfony_container()
  */
 function symfony_service($name)
 {
-    return \symfony_container()->get($name);
+    return symfony_container()->get($name);
 }
 
 /**
@@ -69,5 +69,5 @@ function symfony_service($name)
  */
 function symfony_event_dispatch($name, \Ekino\WordpressBundle\Event\WordpressEvent $event)
 {
-    return \symfony_service('event_dispatcher')->dispatch($name, $event);
+    return symfony_service('event_dispatcher')->dispatch($name, $event);
 }

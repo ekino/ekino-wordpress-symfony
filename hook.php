@@ -22,7 +22,7 @@ function ekino_wordpress_symfony_hook_wp_login($user_login, $user) {
         'user'       => $user
     ));
 
-    \symfony_event_dispatch('wordpress.user_login', $event);
+    symfony_event_dispatch('ekino.wordpress.user_login', $event);
 }
 
 /**
@@ -33,5 +33,5 @@ function ekino_wordpress_symfony_hook_wp_login($user_login, $user) {
 function ekino_wordpress_symfony_hook_wp_logout() {
     $event = new \Ekino\WordpressBundle\Event\WordpressEvent();
 
-    \symfony_event_dispatch('wordpress.user_logout', $event);
+    symfony_event_dispatch('ekino.wordpress.user_logout', $event);
 }
