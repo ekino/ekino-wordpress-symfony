@@ -13,7 +13,7 @@
  */
 function symfony_boot()
 {
-    global $sfContainer;
+    $sfContainer = symfony_get_container();
 
     if (!$sfContainer) {
         require_once sprintf('%s/app/bootstrap.php.cache', WP_SYMFONY_PATH);
@@ -26,25 +26,9 @@ function symfony_boot()
         $sfContainer = $kernel->getContainer();
         $sfContainer->enterScope('request');
         $sfContainer->set('request', new \Symfony\Component\HttpFoundation\Request(), 'request');
+
+        symfony_get_container($sfContainer);
     }
-}
-
-/**
- * Returns Symfony container
- *
- * @return \Symfony\Component\DependencyInjection\ContainerInterface
- *
- * @throws \RuntimeException
- */
-function symfony_container()
-{
-    global $sfContainer;
-
-    if (!$sfContainer) {
-        throw new \RuntimeException('Unable to retrieve Symfony container.');
-    }
-
-    return $sfContainer;
 }
 
 /**
@@ -56,7 +40,25 @@ function symfony_container()
  */
 function symfony_service($name)
 {
-    return symfony_container()->get($name);
+    return symfony_get_container()->get($name);
+}
+
+/**
+ * Returns Symfony container from Symfony EkinoWordpressBundle if installed else from static loaded here
+ *
+ * @param ContainerInterface|null $sfContainer
+ *
+ * @return ContainerInterface
+ */
+function symfony_get_container($sfContainer = null)
+{
+    static $container;
+
+    if (function_exists('symfony_container')) {
+        $container = symfony_container();
+    }
+
+    return $container = $sfContainer ?: $container;
 }
 
 /**
