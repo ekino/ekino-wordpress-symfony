@@ -28,7 +28,8 @@ $service = \symfony_service('my.symfony.service.identifier');
 
 This plugin allows Wordpress to dispatch some hooks on the Symfony EventDispatcher component.
 
-An example with the two following hooks has been added:
+An example with the three following hooks has been added:
 
 * wp_login: authenticate the user in Symfony application on Wordpress login
 * wp_logout: logout user from Symfony when user logout of Wordpress
+* auth_cookie_valid: authenticate the user when the auth cookie is valid

@@ -19,6 +19,11 @@ symfony_boot();
 add_action('wp_login', 'ekino_wordpress_symfony_hook_wp_login', 10, 2);
 
 /**
+ * User cookie validation hook
+ */
+add_action('auth_cookie_valid', 'ekino_wordpress_symfony_hook_wp_login_cookie', 20, 2);
+
+/**
  * User logout hook
  */
 add_action('wp_logout', 'ekino_wordpress_symfony_hook_wp_logout');
