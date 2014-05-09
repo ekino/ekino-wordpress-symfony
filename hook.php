@@ -34,7 +34,8 @@ function ekino_wordpress_symfony_hook_wp_login($user_login, $user) {
 function ekino_wordpress_symfony_hook_wp_login_cookie($cookie_elements, $user) {
     $event = new \Ekino\WordpressBundle\Event\WordpressEvent(array(
         'cookie_elements' => $cookie_elements,
-        'user'            => $user
+        'user'            => $user,
+        'is_logged'       => is_user_logged_in()
     ));
 
     symfony_event_dispatch('ekino.wordpress.user_login', $event);
