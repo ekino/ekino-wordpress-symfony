@@ -26,6 +26,22 @@ function ekino_wordpress_symfony_hook_wp_login($user_login, $user) {
 }
 
 /**
+ * Dispatch Wordpress user auth cookie validation on Symfony event dispatcher
+ *
+ * @param array $cookie_elements Wordpress cookie data
+ * @param \WP_User $user         Wordpress user object
+ */
+function ekino_wordpress_symfony_hook_wp_login_cookie($cookie_elements, $user) {
+    $event = new \Ekino\WordpressBundle\Event\WordpressEvent(array(
+        'cookie_elements' => $cookie_elements,
+        'user'            => $user,
+        'is_logged'       => is_user_logged_in()
+    ));
+
+    symfony_event_dispatch('ekino.wordpress.user_login', $event);
+}
+
+/**
  * Dispatch Wordpress user log out hook on Symfony event dispatcher
  *
  * @see http://codex.wordpress.org/Plugin_API/Action_Reference/wp_logout
