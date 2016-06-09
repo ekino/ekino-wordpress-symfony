@@ -1,0 +1,10 @@
+{
+    "name": "ekino-symfony",
+    "description": "This is the Ekino Wordpress plugin to interact with Symfony (using EkinoWordpressBundle).",
+    "repositories":[
+        {
+            "type":"composer",
+            "url":"https://wpackagist.org"
+        }
+    ],
+}
